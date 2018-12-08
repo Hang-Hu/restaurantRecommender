@@ -152,14 +152,16 @@ You will likely be giving yourself 0 in some of these categories: that's perfect
 
 This is also due Friday December 07 2018 and submitted to Project as a PDF or a URL to HTML (only one of those is necessary).
 
-## Screenshots
+<!-- ## Screenshots -->
 
-<img src="/home/joanna/Pictures/CodePic/big-data-proj/1.png" alt="">
+<!-- <img src="/home/joanna/Pictures/CodePic/big-data-proj/1.png" alt="">
 <img src="/home/joanna/Pictures/CodePic/big-data-proj/2.png" alt="">
 <img src="/home/joanna/Pictures/CodePic/big-data-proj/6.png" alt="">
 <img src="/home/joanna/Pictures/CodePic/big-data-proj/4.png" alt="">
 <img src="/home/joanna/Pictures/CodePic/big-data-proj/5.png" alt="">
+ -->
 
+## Reference
 
 https://www.codementor.io/jadianes/building-a-recommender-with-apache-spark-python-example-app-part1-du1083qbw
 https://www.codementor.io/jadianes/building-a-web-service-with-apache-spark-flask-example-app-part2-du1083854
