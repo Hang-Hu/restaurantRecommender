@@ -1,0 +1,125 @@
+## self.ratings_rdd
+
+userId,movieId,rating
+
+Yelp:
+user_id, business_id, stars
+
+## movie
+
+movieId,title,genres
+
+business
+
+business_id, name
+
+
+## Database
+
+business:
+{
+  "business_id": "Apn5Q_b6Nz61Tq4XzPdf9A",
+  "name": "Minhas Micro Brewery",
+  "neighborhood": "",
+  "address": "1314 44 Avenue NE",
+  "city": "Calgary",
+  "state": "AB",
+  "postal_code": "T2E 6L6",
+  "latitude": 51.0918130155,
+  "longitude": -114.031674872,
+  "stars": 4,
+  "review_count": 24,
+  "is_open": 1,
+  "attributes": {
+    "BikeParking": "False",
+    "BusinessAcceptsCreditCards": "True",
+    "BusinessParking": "{'garage': False, 'street': True, 'validated': False, 'lot': False, 'valet': False}",
+    "GoodForKids": "True",
+    "HasTV": "True",
+    "NoiseLevel": "average",
+    "OutdoorSeating": "False",
+    "RestaurantsAttire": "casual",
+    "RestaurantsDelivery": "False",
+    "RestaurantsGoodForGroups": "True",
+    "RestaurantsPriceRange2": "2",
+    "RestaurantsReservations": "True",
+    "RestaurantsTakeOut": "True"
+  },
+  "categories": "Tours, Breweries, Pizza, Restaurants, Food, Hotels & Travel",
+  "hours": {
+    "Monday": "8:30-17:0",
+    "Tuesday": "11:0-21:0",
+    "Wednesday": "11:0-21:0",
+    "Thursday": "11:0-21:0",
+    "Friday": "11:0-21:0",
+    "Saturday": "11:0-21:0"
+  }
+}
+
+
+{
+  "business_id": "Apn5Q_b6Nz61Tq4XzPdf9A",
+  "name": "Minhas Micro Brewery",
+  "address": "1314 44 Avenue NE",
+  "city": "Calgary",
+  "latitude": 51.0918130155,
+  "longitude": -114.031674872,
+  "stars": 4,
+  "review_count": 24,
+  "is_open": 1,
+  "categories": "Tours, Breweries, Pizza, Restaurants, Food, Hotels & Travel",
+}
+
+```
+python3 -m django startproject yelp_recommender
+python3 manage.py startapp business
+python3 manage.py migrate
+python3 manage.py runserver
+
+python manage.py inspectdb > models.py
+python manage.py migrate
+
+python manage.py createsuperuser
+# username: admin  password:admin
+
+CREATE USER 'yelp'@'localhost' IDENTIFIED BY 'yelp';
+GRANT SELECT, INSERT, DELETE ON YelpRecommender.* TO yelp@'localhost';
+REVOKE CREATE, DROP ON YelpRecommender.* FROM 'yelp'@'localhost';
+alter table Recommend add constraint unique_recommend unique (user_id, business_id);
+alter table Recommend add index user_id (user_id);
+ALTER TABLE Recommend MODIFY recommend_id auto_increment;
+sudo cp /home/joanna/.ivy2/jars/mysql_mysql-connector-java-5.1.39.jar  /usr/local/spark-2.3.1-bin-hadoop2.7/jars/
+```
+
+
+Change your models (in models.py).
+Run `python manage.py makemigrations` to create migrations for those changes
+Run `python manage.py migrate` to apply those changes to the database.
+
+
+### After re train ratings_model based on new user data, delete all rows in Recommend to do new recommendations
+
+
+### Useful Commands
+
+### Spark UI
+
+http://localhost:4040
+
+#### kill spark-submit application
+
+```
+jps
+3346 Main
+19427 SparkSubmit
+19623 Jps
+
+kill -9 19427
+```
+Note that the latter submitted application will overwrite the previous one.
+
+
+
+### Front end
+
+Yelp Fusion API: Right now the best option would be to setup a simple backend API to make a request to our API as we don't support CORS

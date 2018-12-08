@@ -1,0 +1,10 @@
+venv
+.venv
+.idea
+spark-warehouse/
+__pycache__/
+etlAndTrainModel/dataset/*.json
+etlAndTrainModel/output/*
+frontEnd/node_modules/
+etlAndTrainModel/ratings_model/
+etlAndTrainModel/business_dict
