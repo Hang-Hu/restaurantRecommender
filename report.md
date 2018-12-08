@@ -22,15 +22,20 @@ However, Content-Based Filtering does have limitations, it can only recommend re
 
 Therefore I used Collaborative Filtering to do recommendations for restaurants using Yelp's 7.35 gigabytes uncompressed data.
 
-challenges
-
-Collaborative filtering is commonly used for recommender systems. These techniques aim to fill in the missing entries of a user-item association matrix. spark.ml currently supports model-based collaborative filtering, in which users and products are described by a small set of latent factors that can be used to predict missing entries. spark.ml uses the alternating least squares (ALS) algorithm to learn these latent factors. The implementation in spark.ml has the following parameters:
+Challenges: 
 
 
 
 ## Methodology
 
 What is the problem that you are trying to solve? Briefly explain which tool(s)/technique(s) were used for which task and why you chose to implement that way.
+
+To prepare reviews data for Machine Learning model training, I have to clean data to meet my requirement. I only need business which has review_count, is open and is a restaurant, so I first cleaned it. I need reviews which are commented on this business I just generated. I need users which have reviews on restaurants. This was done in `clean_data_to_parquet.py`. I used PySpark DataFrame and RDD, and save cleaned data in Parquet. I used PySpark because spark cluster works well with big data, I did it in ts.sfucloud.ca. I used Parquet because it's fast to save and load parquet, and parquet uses less space.
+
+To do recommendations, I chose Spark ML due to the scalability it has.
+
+To 
+
 
 
 
@@ -39,15 +44,10 @@ What is the problem that you are trying to solve? Briefly explain which tool(s)/
 
 What problems did you encounter while attacking the problem? How did you solve them?
 
-### Getting the data
-
-I downloaded Yelp Dataset from https://www.yelp.com/dataset/download.
-
 ### ETL
 
 Since Spark's DataFrame based ml library I used only supports numeric types for the user and item id columns, but all the id in Yelp Dataset are string like 'wKlH90YB5RYFvJ8N3pstVw', so I mapped business_id, user_id, and review_id to int values using `zipWithIndex()`.
 
-I only need business which has review_count, is open and is a restaurant, so I first cleaned it. I need reviews which are commented on this business I just generated. I need users which have reviews on restaurants. This was done in `clean_data_to_parquet.py`.
 
 In `write_parquet_to_mysql.py` I encountered a critical problem, `Duplicate entry '94157' for key 'PRIMARY'`. The reason is when business_id is 0, since MySQL treats 0 specially as Null, it will insert as a random business_id like 94157, which conflicts the row with business_id 94157. And `zipWithIndex()` will index from 0. My solution is to make business_id start from 1 by `.zipWithIndex().map(lambda x: (x[0], x[1]+1))`.
 
@@ -152,14 +152,7 @@ You will likely be giving yourself 0 in some of these categories: that's perfect
 
 This is also due Friday December 07 2018 and submitted to Project as a PDF or a URL to HTML (only one of those is necessary).
 
-<!-- ## Screenshots -->
 
-<!-- <img src="/home/joanna/Pictures/CodePic/big-data-proj/1.png" alt="">
-<img src="/home/joanna/Pictures/CodePic/big-data-proj/2.png" alt="">
-<img src="/home/joanna/Pictures/CodePic/big-data-proj/6.png" alt="">
-<img src="/home/joanna/Pictures/CodePic/big-data-proj/4.png" alt="">
-<img src="/home/joanna/Pictures/CodePic/big-data-proj/5.png" alt="">
- -->
 
 ## Reference
 
