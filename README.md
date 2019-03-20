@@ -28,3 +28,20 @@ PySpark DataFrame, PySpark RDD, PySpark ML, Redis, Celery, MySQL, Django, Yelp F
 <img src="./images/front-end-4.png" alt="">
 <img src="./images/front-end-5.png" alt="">
 
+
+## Reference
+
+https://www.codementor.io/jadianes/building-a-recommender-with-apache-spark-python-example-app-part1-du1083qbw
+https://www.codementor.io/jadianes/building-a-web-service-with-apache-spark-flask-example-app-part2-du1083854
+
+https://spark.apache.org/docs/latest/ml-collaborative-filtering.html
+
+https://www.djangoproject.com/start/
+
+http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
+http://docs.celeryproject.org/en/latest/userguide/security.html
+http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-task_serializer
+http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html
+
+https://bugra.github.io/work/notes/2014-04-19/alternating-least-squares-method-for-collaborative-filtering/#Intuition
+https://www.quora.com/What-is-the-difference-between-content-based-filtering-and-collaborative-filtering

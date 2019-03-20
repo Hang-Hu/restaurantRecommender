@@ -1,9 +1,5 @@
 # Report
 
-You will submit a report of at most 5 pages giving an overview of your project. (A little more is okay for groups of 3; a little less is probably appropriate for groups of 1 or 2.)
-
-3-4 pages for me.
-
 ## Problem definition
 
 What is the problem that you are trying to solve? What are the challenges of this problem?
@@ -22,7 +18,7 @@ However, Content-Based Filtering does have limitations, it can only recommend re
 
 Therefore I used Collaborative Filtering to do recommendations for restaurants using Yelp's 7.35 gigabytes uncompressed data.
 
-Challenges: 
+Challenges: how to implement ML with recommendation app, how to reply to user request quickly.
 
 
 
@@ -34,10 +30,15 @@ To prepare reviews data for Machine Learning model training, I have to clean dat
 
 To do recommendations, I chose Spark ML due to the scalability it has.
 
-To 
+To save user, business, tip data and cache recommendation, I used MySQL since it's fast and it's relational database, which is easy for query.
 
+To have a back end, I chose Django because it has good support for MySQL and Django Model provides object mapping, which is convenient for data query.
 
+To make Django communicate with Spark Cluster, I used Celery, with Redis as the broker.
 
+For front-end, I used React because it's a library encouraging reusable UI components, where I can reuse my UI code and develop complex interactions with user. Material-UI is a UI Component library, I used together with React to implement good user interface quickly.
+
+To get the images for restaurants, I used the Fusion API to query with business_id.
 
 
 ## Problems
@@ -115,58 +116,16 @@ Another problem is that django send the task name as `business.tasks.recommend_b
 ## Results: What are the outcomes of the project? What did you learn from the data analysis? What did you learn from the implementation?
 
 
+I learned new technology I didn't use before, including Redis, Celery, Django, Yelp Fusion API, Material-UI. And I learned the Collaborative Filtering a lot, how to choose good machine learning method for problem encountered in business, and how to implement machine learning with software.
+
+
 ## Project Summary: A summary of what you did to guide our marking.
 
-
-UI: User interface to the results, possibly including web or data exploration frontends.
-Technologies: New technologies learned as part of doing the project.
-Total: 20
-
-
-Bigness/parallelization: Efficiency of the analysis on a cluster, and scalability to larger data sets.
-
-
-
-Project Summary
-At the end of your project report, please provide a summary of the emphasis/priorities in your project. Give yourself a total of 20 point in these categories:
-
-Getting the data: Acquiring/gathering/downloading.
-ETL: Extract-Transform-Load work and cleaning the data set.
-Problem: Work on defining problem itself and motivation for the analysis.
-Algorithmic work: Work on the algorithms needed to work with the data, including integrating data mining and machine learning techniques.
-Bigness/parallelization: Efficiency of the analysis on a cluster, and scalability to larger data sets.
-UI: User interface to the results, possibly including web or data exploration frontends.
-Visualization: Visualization of analysis results.
-Technologies: New technologies learned as part of doing the project.
-Total: 20
-
-Don't think of this as giving yourself a mark. (That's our job.) This is intended to be a guide for our marking, so we don't miss significant work you did. (e.g. if you give yourself 6 points on “new technologies” and we haven't noticed any, we know to keep looking; if you gave yourself 0 then we can move on and look at other aspects.)
-
-Since this will be guiding our marking, you may want to address these areas in your report as well.
-
-You will likely be giving yourself 0 in some of these categories: that's perfectly reasonable. You aren't expected to do all of these, but should (of course) have done some subset of them (including “bigness” which we expect you to think about).
-
-[If there are other categories you think should be here, ask us.]
-
-
-
-This is also due Friday December 07 2018 and submitted to Project as a PDF or a URL to HTML (only one of those is necessary).
-
-
-
-## Reference
-
-https://www.codementor.io/jadianes/building-a-recommender-with-apache-spark-python-example-app-part1-du1083qbw
-https://www.codementor.io/jadianes/building-a-web-service-with-apache-spark-flask-example-app-part2-du1083854
-
-https://spark.apache.org/docs/latest/ml-collaborative-filtering.html
-
-https://www.djangoproject.com/start/
-
-http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
-http://docs.celeryproject.org/en/latest/userguide/security.html
-http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-task_serializer
-http://docs.celeryproject.org/en/latest/getting-started/brokers/redis.html
-
-https://bugra.github.io/work/notes/2014-04-19/alternating-least-squares-method-for-collaborative-filtering/#Intuition
-https://www.quora.com/What-is-the-difference-between-content-based-filtering-and-collaborative-filtering
+Getting the data: 0
+ETL: 4
+Problem: 3
+Algorithmic work: 1
+Bigness/parallelization: 4
+UI: 4
+Visualization: 0
+Technologies: 4
