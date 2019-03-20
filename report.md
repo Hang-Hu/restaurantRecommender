@@ -111,21 +111,3 @@ app.conf.update(
 ```
 
 Another problem is that django send the task name as `business.tasks.recommend_business` even my code `in views.py` is `from .ml.tasks import recommend_business`. But the celery shows it to be `tasks.recommend_business`, only ipython works. My trick is to specify the task name by `@app.task(name='business.tasks.recommend_business')`. This time django works well, but ipython doesn't match anymore.
-
-
-## Results: What are the outcomes of the project? What did you learn from the data analysis? What did you learn from the implementation?
-
-
-I learned new technology I didn't use before, including Redis, Celery, Django, Yelp Fusion API, Material-UI. And I learned the Collaborative Filtering a lot, how to choose good machine learning method for problem encountered in business, and how to implement machine learning with software.
-
-
-## Project Summary: A summary of what you did to guide our marking.
-
-Getting the data: 0
-ETL: 4
-Problem: 3
-Algorithmic work: 1
-Bigness/parallelization: 4
-UI: 4
-Visualization: 0
-Technologies: 4
